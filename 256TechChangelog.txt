@@ -1,0 +1,51 @@
+Changelog 256 mod:
+
+- The math for multiplications seems off. See table for exact stuff.
+- Renamed to x511 mod, because there was one step too much making it 511x mod instead (1 + 2 + 4 + 8 + 16 + 32 + 64 + 128 + 256 = 511)
+- THUMB RING now multiplies by 0 after the 5th step, because then it gets so small it will be less than a frame thus not measurable for the game.
+    - It is also free after this step.
+- Limited SUPPLIES 3 times and the last step just sets it to 0 food requirement
+- The maximum bonus damage is 1000 for whatever reason. Everything after that bugs out. This will be the limit for everything.
+    - E.g. Milita with 4 attack and ARSON. Camel takes 4 dmg, because no bonus damage and no armor. If the milita has 1023 bonus damage against buildings it will deal 27 damage instead.
+    - I have no idea why 1000 it does not make any sense. This has to be either hard coded or they use base10 numbers in their code, which would be quiet odd...
+- I think overconfidence likes turks a lot, because of some scudding reason elite janissaries had 62 instead of 22 attack.
+- Garrison limit with CAREENING/DRY DOCK is up to 255.
+- Removed SHIPWRIGHT last three instances, because they are multiplies by 0 + epsilon at this point. (Again x0 + no cost)
+- SANCTITY changed
+    - It now correctly multiplies by 1.5 instead of giving +15.
+    - Well the numbers in the editor are floats no doubles so instead of 1.20050042531184E+045 it just multiplies by 1.2005e+38 XD.
+- HERBAL MEDICIN
+    - Ok libre office calc just refused to display the last multiplication. Rude... It just says #NUM!
+    - This is gonna be fun
+- ILLUMINATION
+    - Tooltip says 50% increase, but tech just sets some attribute to 3.
+    - So it should start at 2 and now this will be increased by a 1.5 multiplication.
+    - At the last tech the number is to big and can´t be increased. So it will be a free tech.
+- FAITH
+    - Same as ILLUMINATION
+- HOARDINGS, MASONRY, ARCHITECTURE
+    - Removed kind of. (Set to x1 after 1 research)
+    - Yeah I know it kind of is against the whole 256x mod stuff, but I think these techs just suck the fun out of the mode.
+    - I don´t want the players to remember how often they got each tech just to not break all their buildings.
+    - HOARDINGS is now free after the first research, but has no effect.
+    - MASONRY and ARCHITECTURE cost half of the original cost as their effect is reduced to giving armor.
+- SAPPERS
+    - Is exceeding the limit of 1000 bonus damage and is now capped to it.
+    - This makes the two last researches useless and the third to last only improves the bonus damage by 55, thus it will only cost as much as 4 SAPPERS researches.
+- Maximum sight radius is 22. After that TOWN WATCH/TOWN PATROL is free.
+
+
+
+Findings:
+- Bonus damage will overflow if it is set over 1000. See ARSON.
+- Garrison limit will overflow after 255. (At least for transport ships)
+
+
+Problems:
+- Attack overflows:
+    - If any attack type is increased over 255 too much it will overflow into different effects 
+    - For example PARTHIAN TACTICS increases the cav archer attack by 4 against spearman, but after 256 times you can deal 1k damage against castles
+- Breaking techs are not removed:
+    - I did not remove techs that break the game like GILLNETS or HUSBANDRY, but rather made them useless and set the cost to 0.
+    - I simply do not know how to remove these techs without having to reshuffle all of the other tech effects...
+    - If someone with more knowledge of the GenieEditor can adjust that I would be grateful.
