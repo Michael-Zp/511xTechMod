@@ -6,7 +6,16 @@ Bugs:
     - Fixed
     - Every x2 x4... tech is now connected to the original tech by requiring it (e.g. Herbal Medicin x2 is tech 1361 and now requires 441 to be researched first)
 
+
 Changelog 256 mod:
+
+29 - 05 - 2020
+
+Removed all the free tech.
+
+
+
+28 - 05 - 2020
 
 Renamed to x511 mod, because there was one step too much making it 511x mod instead (1 + 2 + 4 + 8 + 16 + 32 + 64 + 128 + 256 = 511)
 THUMB RING
