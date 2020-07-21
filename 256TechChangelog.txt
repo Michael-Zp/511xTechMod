@@ -9,9 +9,14 @@ Bugs:
 
 Changelog 256 mod:
 
+21 - 07 - 2020
+
+Updated to patch version 39284
+
+
 29 - 05 - 2020
 
-Removed all the free tech.
+Removed all the free techs.
 
 
 
